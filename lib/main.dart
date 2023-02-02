@@ -16,15 +16,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GamesModel gamesModel = GamesModel();
-    gamesModel.fetchGames();
-
-    GameModel gameModel = GameModel();
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: gamesModel),
-        ChangeNotifierProvider.value(value: gameModel),
+        ChangeNotifierProvider<GamesModel>(create: (_) => GamesModel()),
+        ChangeNotifierProvider<GameModel>(create: (_) => GameModel()),
       ],
       child: MaterialApp(
         theme: ThemeData.light().copyWith(

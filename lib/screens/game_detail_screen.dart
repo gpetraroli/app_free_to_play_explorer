@@ -8,16 +8,17 @@ class GameDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final gameId = ModalRoute.of(context)?.settings.arguments as int;
-    final gameModel = Provider.of<GameModel>(context);
+    final gameId = ModalRoute
+        .of(context)
+        ?.settings
+        .arguments as int;
+    final gameData = Provider.of<GameModel>(context);
 
-    final gameData = gameModel.fetchGame(gameId);
-
-    print(gameData);
+    gameData.fetchData(gameId);
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Game'),
+        title: Text(gameData.gameData.toString()),
       ),
       body: Text(gameId.toString()),
     );

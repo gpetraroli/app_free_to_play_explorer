@@ -7,6 +7,10 @@ class GamesModel with ChangeNotifier {
   List<dynamic> _games = [];
   bool _isApiDown = false;
 
+  GamesModel() {
+    fetchGames();
+  }
+
   fetchGames() async {
     try {
       var response =
